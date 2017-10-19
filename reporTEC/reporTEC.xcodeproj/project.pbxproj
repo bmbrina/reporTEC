@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		182F9607DA708A65973AAFFD /* Pods_reporTEC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 030714379E31EF921F90A580 /* Pods_reporTEC.framework */; };
 		96666AF71F916662003A92A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96666AF61F916662003A92A1 /* AppDelegate.swift */; };
-		96666AF91F916662003A92A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96666AF81F916662003A92A1 /* ViewController.swift */; };
 		96666AFC1F916662003A92A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96666AFA1F916662003A92A1 /* Main.storyboard */; };
 		96666AFE1F916662003A92A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96666AFD1F916662003A92A1 /* Assets.xcassets */; };
 		96666B011F916662003A92A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96666AFF1F916662003A92A1 /* LaunchScreen.storyboard */; };
+		96B5B83F1F995A5700704CE7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B83E1F995A5700704CE7 /* Colors.swift */; };
+		96B5B8431F995DCE00704CE7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B8421F995DCE00704CE7 /* LoginViewController.swift */; };
+		96B5B8451F995DD800704CE7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B8441F995DD800704CE7 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +23,14 @@
 		8EB7A91B063C8472308701AC /* Pods-reporTEC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reporTEC.release.xcconfig"; path = "Pods/Target Support Files/Pods-reporTEC/Pods-reporTEC.release.xcconfig"; sourceTree = "<group>"; };
 		96666AF31F916662003A92A1 /* reporTEC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reporTEC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96666AF61F916662003A92A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		96666AF81F916662003A92A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		96666AFB1F916662003A92A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96666AFD1F916662003A92A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96666B001F916662003A92A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96666B021F916662003A92A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		969803841F95815F00E6448B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96B5B83E1F995A5700704CE7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		96B5B8421F995DCE00704CE7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = /Users/bmbrina/Documents/ITESM/SeptimoSemestre/iOS/Proyecto/reporTEC/reporTEC/reporTEC/LoginViewController.swift; sourceTree = "<absolute>"; };
+		96B5B8441F995DD800704CE7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +77,12 @@
 			children = (
 				969803841F95815F00E6448B /* GoogleService-Info.plist */,
 				96666AF61F916662003A92A1 /* AppDelegate.swift */,
-				96666AF81F916662003A92A1 /* ViewController.swift */,
+				96B5B8421F995DCE00704CE7 /* LoginViewController.swift */,
+				96B5B8441F995DD800704CE7 /* MainViewController.swift */,
 				96666AFA1F916662003A92A1 /* Main.storyboard */,
 				96666AFD1F916662003A92A1 /* Assets.xcassets */,
 				96666AFF1F916662003A92A1 /* LaunchScreen.storyboard */,
+				96B5B83E1F995A5700704CE7 /* Colors.swift */,
 				96666B021F916662003A92A1 /* Info.plist */,
 			);
 			path = reporTEC;
@@ -221,8 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96666AF91F916662003A92A1 /* ViewController.swift in Sources */,
+				96B5B8431F995DCE00704CE7 /* LoginViewController.swift in Sources */,
+				96B5B83F1F995A5700704CE7 /* Colors.swift in Sources */,
 				96666AF71F916662003A92A1 /* AppDelegate.swift in Sources */,
+				96B5B8451F995DD800704CE7 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
