@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/bmbrina/Documents/ITESM/SeptimoSemestre/iOS/Proyecto/reporTEC/reporTEC/reporTEC/LoginViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:reporTEC.xcodeproj">
    </FileRef>
    <FileRef
