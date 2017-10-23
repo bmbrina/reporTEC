@@ -57,7 +57,7 @@ class DirectoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "directoryCell", for: indexPath)
         cell.textLabel?.text = numbers[indexPath.row].name
         cell.detailTextLabel?.text = String(numbers[indexPath.row].number)
-        cell.imageView?.image = UIImage(named: "phone")
+        cell.imageView?.image = UIImage(named: "ophone")
         return cell
     }
 

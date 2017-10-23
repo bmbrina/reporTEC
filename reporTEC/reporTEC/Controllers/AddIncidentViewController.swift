@@ -22,11 +22,14 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var imagePicker : UIImagePickerController!
     var locationManager = CLLocationManager()
     var location : String = ""
+    var activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
+    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var addIncidentButton: UIButton!
     
     // MARK: - Actions
     @IBAction func selectImage(_ sender: UIButton) {
@@ -39,31 +42,16 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func addIncident(_ sender: UIButton) {
         let title = titleField.text!
         let desc = descTextView.text!
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        currentDate = formatter.string(from: date)
-        
-        // Firebase Storage Reference
-//        let storageRef = Storage.storage().reference().child("images/\(title)_\(currentDate).jpg")
-//        var data = Data()
-//        data = UIImageJPEGRepresentation(incidentImage, 0.8)!
-//        storageRef.putData(data, metadata: nil) { (metadata, error) in
-//            guard let metadata = metadata else {
-//                // Uh-oh, an error occurred!
-//                return
-//            }
-//            print(metadata.downloadURL() as Any)
-//            self.imageUrl = String(describing: metadata.downloadURL())
-//        }
-            // Build Incident
-        let incident = Incident(title: title, desc: desc, imageUrl: self.imageUrl, category: self.category, location: location, status: "pending", date: self.currentDate)
+
+        // Build Incident
+        let incident = Incident(title: title, desc: desc, imageUrl: imageUrl, category: category, location: location, status: "pending", date: currentDate)
             
         if title != "" && desc != "" && category != "" {
             // Firebase Database Reference
             self.ref = Database.database().reference(withPath: "incidents")
             let incidentRef = self.ref.childByAutoId()
             incidentRef.setValue(incident.toAnyObject())
+            clearInformation()
             tabBarController?.selectedIndex = 0
         } else {
             let alert = UIAlertController(title: "Error", message: "El título, descripción y categoría son campos obligatorios.", preferredStyle: UIAlertControllerStyle.alert)
@@ -92,6 +80,11 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        currentDate = formatter.string(from: date)
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,10 +114,51 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         view.endEditing(true)
     }
     
+    func clearInformation() {
+        titleField.text = ""
+        descTextView.text = "Descripción"
+        categoryPickerView.selectRow(0, inComponent: 0, animated: true)
+        addImageButton.backgroundColor = UIColor.darkBlueButton
+    }
+    
+    func startActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        
+        activityIndicator.center = self.view.center
+        
+        activityIndicator.hidesWhenStopped = true
+        
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
     // MARK: - Image Picker
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        imagePicker.dismiss(animated: true, completion: nil)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.imagePicker.dismiss(animated: true, completion: nil)
+        addImageButton.backgroundColor = UIColor.gray
+        startActivityIndicator()
+        let storageRef = Storage.storage().reference().child("images/\(titleField.text!)_\(currentDate).jpg")
         incidentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let data = UIImageJPEGRepresentation(incidentImage, 0.8)!
+        storageRef.putData(data, metadata: nil) { (metadata, error) in
+            if let error = error {
+                print("Error uploading: \(error)")
+                return
+            }
+            self.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+            self.stopActivityIndicator()
+        }
+        
     }
 
     // MARK: - Location

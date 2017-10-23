@@ -18,5 +18,7 @@ extension UIColor {
     
     static let doneStatus = UIColor(red: 184/255.0, green: 233/255.0, blue: 134/255.0, alpha: 1.0)
     
+    static let darkBlueButton = UIColor(red: 41/255.0, green: 36/255.0, blue: 93/255.0, alpha: 1.0)
+    
 }
 

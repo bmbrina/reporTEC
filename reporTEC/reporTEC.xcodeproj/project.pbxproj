@@ -23,6 +23,7 @@
 		96B5B83F1F995A5700704CE7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B83E1F995A5700704CE7 /* Colors.swift */; };
 		96B5B8451F995DD800704CE7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B8441F995DD800704CE7 /* MainViewController.swift */; };
 		96B5B8471F995FEE00704CE7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B8461F995FEE00704CE7 /* LoginViewController.swift */; };
+		96B9558D1F9E3E5F0036373F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B9558C1F9E3E5F0036373F /* RoundButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		96B5B83E1F995A5700704CE7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		96B5B8441F995DD800704CE7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		96B5B8461F995FEE00704CE7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		96B9558C1F9E3E5F0036373F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				96666AFA1F916662003A92A1 /* Main.storyboard */,
 				96666AFF1F916662003A92A1 /* LaunchScreen.storyboard */,
+				96B9558C1F9E3E5F0036373F /* RoundButton.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96B9558D1F9E3E5F0036373F /* RoundButton.swift in Sources */,
 				96B5B8471F995FEE00704CE7 /* LoginViewController.swift in Sources */,
 				961003971F9D4F9B0073816F /* ViewIncidentViewController.swift in Sources */,
 				961003911F9D4B4B0073816F /* DirectoryTableViewController.swift in Sources */,
