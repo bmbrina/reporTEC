@@ -1,8 +1,9 @@
 platform :ios, '9.0'
+use_frameworks!
+
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
 target 'reporTEC' do
-  use_frameworks!
-
-    pod 'Firebase/Core'
-
 end
