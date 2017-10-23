@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUsage</key>
+	<string>Queremos saber tu ubicación para poder mejorar el servicio de atención de incidentes.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Queremos saber tu ubicación para poder mejorar el servicio de atención de incidentes.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
 	<key>CFBundleDevelopmentRegion</key>

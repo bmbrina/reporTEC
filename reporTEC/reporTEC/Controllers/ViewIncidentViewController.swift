@@ -7,20 +7,42 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewIncidentViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var incidentImageView: UIImageView!
+    
+    // MARK: - Custom Variables
+    var incident : Incident!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        titleLabel.text = incident.title
+        if (incident.status == "done") {
+            statusLabel.textColor = UIColor.doneStatus
+            statusLabel.text = "Resuelto"
+        } else {
+            statusLabel.textColor = UIColor.pendingStatus
+            statusLabel.text = "Pendiente"
+        }
+        descriptionLabel.text = incident.desc
+        
+        if (incident.imageUrl != "") {
+            incidentImageView.sd_setImage(with: URL(string: incident.imageUrl), placeholderImage: UIImage(named: "no-preview"))
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
-    
 
     /*
     // MARK: - Navigation

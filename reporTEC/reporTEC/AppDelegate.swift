@@ -20,11 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init Firebase
         FirebaseApp.configure()
         
-        // Change Navigaiton Bar Color
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().isTranslucent = false
+        // Change Navigaiton Bar Style
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         return true
     }
 

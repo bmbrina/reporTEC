@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
-class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     // MARK: - Custom Variables
     var ref : DatabaseReference!
@@ -18,7 +19,9 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var imageUrl : String = ""
     var currentDate : String = ""
     var incidentImage : UIImage!
-    var imagePicker: UIImagePickerController!
+    var imagePicker : UIImagePickerController!
+    var locationManager = CLLocationManager()
+    var location : String = ""
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
@@ -41,26 +44,27 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         formatter.dateFormat = "dd.MM.yyyy"
         currentDate = formatter.string(from: date)
         
+        // Firebase Storage Reference
+//        let storageRef = Storage.storage().reference().child("images/\(title)_\(currentDate).jpg")
+//        var data = Data()
+//        data = UIImageJPEGRepresentation(incidentImage, 0.8)!
+//        storageRef.putData(data, metadata: nil) { (metadata, error) in
+//            guard let metadata = metadata else {
+//                // Uh-oh, an error occurred!
+//                return
+//            }
+//            print(metadata.downloadURL() as Any)
+//            self.imageUrl = String(describing: metadata.downloadURL())
+//        }
+            // Build Incident
+        let incident = Incident(title: title, desc: desc, imageUrl: self.imageUrl, category: self.category, location: location, status: "pending", date: self.currentDate)
+            
         if title != "" && desc != "" && category != "" {
-            let storageRef = Storage.storage().reference().child("images/\(title)_\(currentDate).jpg")
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            var data = Data()
-            data = UIImageJPEGRepresentation(incidentImage, 0.8)!
-            storageRef.putData(data, metadata: metadata) { (metadata, error) in
-                guard let metadata = metadata else {
-                    // Uh-oh, an error occurred!
-                    return
-                }
-                print(metadata.downloadURL() as Any)
-                self.imageUrl = String(describing: metadata.downloadURL())
-                // Build Incident
-                let incident = Incident(title: title, desc: desc, imageUrl: self.imageUrl, category: self.category, location: "", status: "pending", date: self.currentDate)
-                self.ref = Database.database().reference(withPath: "incidents")
-                let incidentRef = self.ref.childByAutoId()
-                incidentRef.setValue(incident.toAnyObject())
-                
-            }
+            // Firebase Database Reference
+            self.ref = Database.database().reference(withPath: "incidents")
+            let incidentRef = self.ref.childByAutoId()
+            incidentRef.setValue(incident.toAnyObject())
+            tabBarController?.selectedIndex = 0
         } else {
             let alert = UIAlertController(title: "Error", message: "El título, descripción y categoría son campos obligatorios.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
@@ -83,6 +87,11 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.categories = newCategories
             self.categoryPickerView.reloadAllComponents()
         })
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,6 +127,11 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         incidentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
 
+    // MARK: - Location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation : CLLocation = locations[0]
+        location = "\(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)"
+    }
     /*
     // MARK: - Navigation
 
