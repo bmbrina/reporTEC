@@ -174,7 +174,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Dc-sO-23S" customClass="CustomTextView" customModule="reporTEC" customModuleProvider="target">
-                                <rect key="frame" x="16" y="236" width="343" height="73"/>
+                                <rect key="frame" x="16" y="236" width="343" height="177"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -190,40 +190,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9d-Xx-48H" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
-                                <rect key="frame" x="16" y="514" width="343" height="36"/>
-                                <color key="backgroundColor" red="0.16078431372549018" green="0.14117647058823529" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Subir imagen">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="selectImage:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="3Jp-Yt-B84"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rF7-KJ-ZTh" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
-                                <rect key="frame" x="16" y="470" width="343" height="36"/>
-                                <color key="backgroundColor" red="0.16078431369999999" green="0.14117647059999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Agregar ubicación">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="selectImage:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="Nqq-e8-uS7"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpq-zc-OVR">
-                                <rect key="frame" x="16" y="354" width="343" height="100"/>
+                                <rect key="frame" x="16" y="458" width="343" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="MhN-70-v7w"/>
                                 </constraints>
@@ -233,10 +201,10 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfx-MW-SWz" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
-                                <rect key="frame" x="16" y="558" width="343" height="36"/>
+                                <rect key="frame" x="16" y="566" width="343" height="36"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.50588235294117645" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Reportar incidente">
+                                <state key="normal" title="Continuar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -245,7 +213,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addIncident:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="s6O-cA-fdK"/>
+                                    <action selector="continuePressed:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="7Ie-mp-Cw1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkP-dX-R6n">
@@ -261,7 +229,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categoria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nos-0H-JQB">
-                                <rect key="frame" x="16" y="325" width="343" height="21"/>
+                                <rect key="frame" x="16" y="429" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -275,27 +243,21 @@
                             <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="Zfx-MW-SWz" secondAttribute="trailing" constant="16" id="DnV-B6-Sec"/>
                             <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="Yyc-Co-yqx" secondAttribute="trailing" constant="16" id="E2h-uW-Zrz"/>
                             <constraint firstItem="zMW-tR-wpC" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="EPj-74-l8L"/>
-                            <constraint firstItem="r9d-Xx-48H" firstAttribute="top" secondItem="rF7-KJ-ZTh" secondAttribute="bottom" constant="8" id="GEQ-hz-j0g"/>
                             <constraint firstItem="Yyc-Co-yqx" firstAttribute="top" secondItem="gkP-dX-R6n" secondAttribute="bottom" constant="8" id="JqY-DJ-6IL"/>
                             <constraint firstItem="Zfx-MW-SWz" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="NOH-2Q-nxe"/>
-                            <constraint firstItem="rF7-KJ-ZTh" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="NcZ-Sk-6ks"/>
                             <constraint firstItem="Bpq-zc-OVR" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="OdT-UB-Od7"/>
                             <constraint firstItem="1Dc-sO-23S" firstAttribute="top" secondItem="zMW-tR-wpC" secondAttribute="bottom" constant="8" id="Q0O-PR-Xa0"/>
                             <constraint firstItem="gkP-dX-R6n" firstAttribute="top" secondItem="5cb-DV-CLC" secondAttribute="top" constant="16" id="QBW-Tq-hOG"/>
                             <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="Bpq-zc-OVR" secondAttribute="trailing" constant="16" id="Qt6-CI-zvB"/>
-                            <constraint firstItem="Zfx-MW-SWz" firstAttribute="top" secondItem="r9d-Xx-48H" secondAttribute="bottom" constant="8" id="T2d-J1-Q2P"/>
-                            <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="r9d-Xx-48H" secondAttribute="trailing" constant="16" id="U2m-HW-BWR"/>
-                            <constraint firstItem="rF7-KJ-ZTh" firstAttribute="top" secondItem="Bpq-zc-OVR" secondAttribute="bottom" constant="16" id="fDJ-CM-qp3"/>
                             <constraint firstItem="Yyc-Co-yqx" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="glU-Zy-Ghd"/>
                             <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="gkP-dX-R6n" secondAttribute="trailing" constant="16" id="hsb-nu-mLu"/>
                             <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="1Dc-sO-23S" secondAttribute="trailing" constant="16" id="qc9-sj-eKK"/>
                             <constraint firstItem="nos-0H-JQB" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="rSu-Nt-Yy9"/>
-                            <constraint firstItem="5cb-DV-CLC" firstAttribute="bottom" secondItem="Zfx-MW-SWz" secondAttribute="bottom" constant="24" id="s4p-GD-Vfm"/>
-                            <constraint firstItem="r9d-Xx-48H" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="sUJ-A4-uJ4"/>
+                            <constraint firstItem="5cb-DV-CLC" firstAttribute="bottom" secondItem="Zfx-MW-SWz" secondAttribute="bottom" constant="16" id="s4p-GD-Vfm"/>
                             <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="nos-0H-JQB" secondAttribute="trailing" constant="16" id="tzf-1I-3Ky"/>
+                            <constraint firstItem="Zfx-MW-SWz" firstAttribute="top" secondItem="Bpq-zc-OVR" secondAttribute="bottom" constant="8" id="vDn-ub-Ktw"/>
                             <constraint firstItem="gkP-dX-R6n" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="w1F-FA-TX6"/>
                             <constraint firstItem="zMW-tR-wpC" firstAttribute="top" secondItem="Yyc-Co-yqx" secondAttribute="bottom" constant="16" id="x4n-al-Vys"/>
-                            <constraint firstItem="5cb-DV-CLC" firstAttribute="trailing" secondItem="rF7-KJ-ZTh" secondAttribute="trailing" constant="16" id="xgh-dE-xBp"/>
                             <constraint firstItem="1Dc-sO-23S" firstAttribute="leading" secondItem="5cb-DV-CLC" secondAttribute="leading" constant="16" id="zOS-CD-AWm"/>
                             <constraint firstItem="nos-0H-JQB" firstAttribute="top" secondItem="1Dc-sO-23S" secondAttribute="bottom" constant="16" id="zyZ-2E-ASL"/>
                         </constraints>
@@ -306,11 +268,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Reportar incidente" id="6gP-ey-1r1"/>
                     <connections>
-                        <outlet property="addImageButton" destination="r9d-Xx-48H" id="fqk-r0-QR7"/>
-                        <outlet property="addIncidentButton" destination="Zfx-MW-SWz" id="89k-jm-YdR"/>
                         <outlet property="categoryPickerView" destination="Bpq-zc-OVR" id="I4W-Pe-hPc"/>
                         <outlet property="descTextView" destination="1Dc-sO-23S" id="EyM-RZ-1fp"/>
                         <outlet property="titleField" destination="Yyc-Co-yqx" id="bJF-33-a7N"/>
+                        <segue destination="DIb-4x-gGC" kind="show" identifier="continueAdd" id="D9I-eQ-iAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yKH-ov-Rdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,6 +282,113 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1425" y="759"/>
+        </scene>
+        <!--Add Continue View Controller-->
+        <scene sceneID="aet-Zi-f4B">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="DIb-4x-gGC" customClass="AddContinueViewController" customModule="reporTEC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="avo-wG-r4j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwM-YM-rUx" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
+                                <rect key="frame" x="16" y="567" width="343" height="36"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.50588235290000005" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Eyl-WK-YLG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Reportar incidente">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addIncident:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="Wv9-y1-g98"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C63-AO-Kkf" customClass="RoundView" customModule="reporTEC" customModuleProvider="target">
+                                <rect key="frame" x="16" y="132" width="343" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSb-aS-HlD">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyy-Ti-lKW">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="Seleccionar imagen">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectImage:" destination="DIb-4x-gGC" eventType="touchUpInside" id="4bF-g8-95X"/>
+                                            <action selector="selectImage:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="D69-fa-GCq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.14117647059999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Fyy-Ti-lKW" secondAttribute="trailing" id="CTi-v1-hPp"/>
+                                    <constraint firstAttribute="bottom" secondItem="QSb-aS-HlD" secondAttribute="bottom" id="Dbj-ji-X3E"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fyy-Ti-lKW" secondAttribute="bottom" id="Yi0-m8-e5U"/>
+                                    <constraint firstItem="QSb-aS-HlD" firstAttribute="leading" secondItem="C63-AO-Kkf" secondAttribute="leading" id="i4i-cf-wDs"/>
+                                    <constraint firstAttribute="height" constant="150" id="klV-xU-uyC"/>
+                                    <constraint firstItem="Fyy-Ti-lKW" firstAttribute="leading" secondItem="C63-AO-Kkf" secondAttribute="leading" id="rb6-zJ-vbL"/>
+                                    <constraint firstItem="QSb-aS-HlD" firstAttribute="top" secondItem="C63-AO-Kkf" secondAttribute="top" id="vGc-3y-ZNI"/>
+                                    <constraint firstAttribute="trailing" secondItem="QSb-aS-HlD" secondAttribute="trailing" id="wL7-ZD-wyc"/>
+                                    <constraint firstItem="Fyy-Ti-lKW" firstAttribute="top" secondItem="C63-AO-Kkf" secondAttribute="top" id="zJ9-vz-FMR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBZ-dx-b3I" customClass="RoundView" customModule="reporTEC" customModuleProvider="target">
+                                <rect key="frame" x="16" y="298" width="343" height="301"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3wh-Y3-dMp">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="301"/>
+                                    </mapView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3wh-Y3-dMp" secondAttribute="bottom" id="FjM-hu-8sP"/>
+                                    <constraint firstItem="3wh-Y3-dMp" firstAttribute="top" secondItem="EBZ-dx-b3I" secondAttribute="top" id="Hza-1P-6uX"/>
+                                    <constraint firstAttribute="trailing" secondItem="3wh-Y3-dMp" secondAttribute="trailing" id="Pli-Ya-TJZ"/>
+                                    <constraint firstItem="3wh-Y3-dMp" firstAttribute="leading" secondItem="EBZ-dx-b3I" secondAttribute="leading" id="WQs-hz-aIu"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G8T-vq-MrV" firstAttribute="trailing" secondItem="gwM-YM-rUx" secondAttribute="trailing" constant="16" id="Kd5-JC-QOD"/>
+                            <constraint firstItem="C63-AO-Kkf" firstAttribute="leading" secondItem="G8T-vq-MrV" secondAttribute="leading" constant="16" id="T0x-ZR-13x"/>
+                            <constraint firstItem="G8T-vq-MrV" firstAttribute="trailing" secondItem="EBZ-dx-b3I" secondAttribute="trailing" constant="16" id="VS9-oZ-MKL"/>
+                            <constraint firstItem="C63-AO-Kkf" firstAttribute="top" secondItem="G8T-vq-MrV" secondAttribute="top" constant="16" id="b7A-dt-CCh"/>
+                            <constraint firstItem="gwM-YM-rUx" firstAttribute="leading" secondItem="G8T-vq-MrV" secondAttribute="leading" constant="16" id="chU-NR-0uA"/>
+                            <constraint firstItem="G8T-vq-MrV" firstAttribute="bottom" secondItem="gwM-YM-rUx" secondAttribute="bottom" constant="16" id="dAB-9c-IlA"/>
+                            <constraint firstItem="EBZ-dx-b3I" firstAttribute="top" secondItem="C63-AO-Kkf" secondAttribute="bottom" constant="16" id="h6w-qM-rB8"/>
+                            <constraint firstItem="gwM-YM-rUx" firstAttribute="top" secondItem="EBZ-dx-b3I" secondAttribute="bottom" constant="16" id="sg0-6G-t9a"/>
+                            <constraint firstItem="G8T-vq-MrV" firstAttribute="trailing" secondItem="C63-AO-Kkf" secondAttribute="trailing" constant="16" id="y8Q-bK-gkB"/>
+                            <constraint firstItem="EBZ-dx-b3I" firstAttribute="leading" secondItem="G8T-vq-MrV" secondAttribute="leading" constant="16" id="zoe-wJ-JDi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G8T-vq-MrV"/>
+                    </view>
+                    <connections>
+                        <outlet property="addImageBtn" destination="Fyy-Ti-lKW" id="uAD-uQ-K47"/>
+                        <outlet property="selectedImageView" destination="QSb-aS-HlD" id="p74-F3-SfJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L2A-tV-2l4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2184.8000000000002" y="759.67016491754134"/>
         </scene>
         <!--Directorio-->
         <scene sceneID="9e7-xj-GhQ">

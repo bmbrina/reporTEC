@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // MARK: - Custom Variables
     var ref : DatabaseReference!
@@ -18,28 +18,33 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var category : String = ""
     var imageUrl : String = ""
     var currentDate : String = ""
+    /*
     var incidentImage : UIImage!
     var imagePicker : UIImagePickerController!
     var locationManager = CLLocationManager()
     var location : String = ""
+ */
     var activityIndicator = UIActivityIndicatorView()
+ 
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
-    @IBOutlet weak var addImageButton: UIButton!
-    @IBOutlet weak var addIncidentButton: UIButton!
+
     
     // MARK: - Actions
-    @IBAction func selectImage(_ sender: UIButton) {
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+    
+    
+    @IBAction func continuePressed(_ sender: Any) {
+        //TODO
+        // Validar que la info este completa
+        performSegue(withIdentifier: "continueAdd", sender: self)
     }
     
+    
     @IBAction func addIncident(_ sender: UIButton) {
+        /*
         let title = titleField.text!
         let desc = descTextView.text!
 
@@ -58,6 +63,7 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
+ */
     }
     
     override func viewDidLoad() {
@@ -76,11 +82,12 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.categoryPickerView.reloadAllComponents()
         })
         
+        /*
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
+        */
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
@@ -118,7 +125,7 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         titleField.text = ""
         descTextView.text = "Descripción"
         categoryPickerView.selectRow(0, inComponent: 0, animated: true)
-        addImageButton.backgroundColor = UIColor.darkBlueButton
+        //addImageButton.backgroundColor = UIColor.darkBlueButton
     }
     
     func startActivityIndicator() {
@@ -142,38 +149,19 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
-    // MARK: - Image Picker
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.imagePicker.dismiss(animated: true, completion: nil)
-        addImageButton.backgroundColor = UIColor.gray
-        startActivityIndicator()
-        let storageRef = Storage.storage().reference().child("images/\(titleField.text!)_\(currentDate).jpg")
-        incidentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let data = UIImageJPEGRepresentation(incidentImage, 0.8)!
-        storageRef.putData(data, metadata: nil) { (metadata, error) in
-            if let error = error {
-                print("Error uploading: \(error)")
-                return
-            }
-            self.imageUrl = (metadata?.downloadURL()?.absoluteString)!
-            self.stopActivityIndicator()
-        }
-        
-    }
 
-    // MARK: - Location
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation : CLLocation = locations[0]
-        location = "\(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)"
-    }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //TODO
+        if segue.identifier == "continueAdd" {
+            let vc = segue.destination as! AddContinueViewController
+            // pass values to next vc
+        }
+        
     }
-    */
+    
 
 }

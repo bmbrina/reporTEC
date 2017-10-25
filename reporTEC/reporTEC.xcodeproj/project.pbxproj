@@ -25,6 +25,8 @@
 		96B5B8471F995FEE00704CE7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5B8461F995FEE00704CE7 /* LoginViewController.swift */; };
 		96B9558D1F9E3E5F0036373F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B9558C1F9E3E5F0036373F /* RoundButton.swift */; };
 		F99050201FA0F96D005E814F /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990501F1FA0F96D005E814F /* CustomTextView.swift */; };
+		F99050231FA117E2005E814F /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99050221FA117E2005E814F /* RoundView.swift */; };
+		F99050251FA11BF5005E814F /* AddContinueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99050241FA11BF5005E814F /* AddContinueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		96B5B8461F995FEE00704CE7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96B9558C1F9E3E5F0036373F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		F990501F1FA0F96D005E814F /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		F99050221FA117E2005E814F /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		F99050241FA11BF5005E814F /* AddContinueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContinueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				96666AFA1F916662003A92A1 /* Main.storyboard */,
 				96666AFF1F916662003A92A1 /* LaunchScreen.storyboard */,
 				96B9558C1F9E3E5F0036373F /* RoundButton.swift */,
+				F99050221FA117E2005E814F /* RoundView.swift */,
 				F990501F1FA0F96D005E814F /* CustomTextView.swift */,
 			);
 			path = Layouts;
@@ -135,6 +140,7 @@
 				9610038E1F9D4B240073816F /* IncidentsTableViewController.swift */,
 				961003961F9D4F9B0073816F /* ViewIncidentViewController.swift */,
 				961003981F9D54FB0073816F /* AddIncidentViewController.swift */,
+				F99050241FA11BF5005E814F /* AddContinueViewController.swift */,
 				961003901F9D4B4B0073816F /* DirectoryTableViewController.swift */,
 			);
 			path = Controllers;
@@ -287,12 +293,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F99050201FA0F96D005E814F /* CustomTextView.swift in Sources */,
+				F99050231FA117E2005E814F /* RoundView.swift in Sources */,
 				96B9558D1F9E3E5F0036373F /* RoundButton.swift in Sources */,
 				96B5B8471F995FEE00704CE7 /* LoginViewController.swift in Sources */,
 				961003971F9D4F9B0073816F /* ViewIncidentViewController.swift in Sources */,
 				961003911F9D4B4B0073816F /* DirectoryTableViewController.swift in Sources */,
 				96B5B83F1F995A5700704CE7 /* Colors.swift in Sources */,
 				96666AF71F916662003A92A1 /* AppDelegate.swift in Sources */,
+				F99050251FA11BF5005E814F /* AddContinueViewController.swift in Sources */,
 				9641AC201F9D791100A77782 /* Category.swift in Sources */,
 				96B5B8451F995DD800704CE7 /* MainViewController.swift in Sources */,
 				961003991F9D54FB0073816F /* AddIncidentViewController.swift in Sources */,
