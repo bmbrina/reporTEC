@@ -23,7 +23,8 @@ class ViewIncidentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = incident.title
+        //titleLabel.text = incident.title
+        title = incident.title
         if (incident.status == "done") {
             statusLabel.textColor = UIColor.doneStatus
             statusLabel.text = "Resuelto"
