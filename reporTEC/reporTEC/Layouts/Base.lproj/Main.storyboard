@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5i-Gn-B4O">
-                                <rect key="frame" x="16" y="522" width="343" height="128"/>
+                                <rect key="frame" x="16" y="502" width="343" height="100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="no-preview" translatesAutoresizingMaskIntoConstraints="NO" id="PJH-bf-kNP">
