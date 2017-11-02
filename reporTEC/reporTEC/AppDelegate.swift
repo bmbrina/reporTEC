@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Change Navigaiton Bar Style
         UINavigationBar.appearance().barTintColor = .white
-        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().tintColor = UIColor.mainColor
         UINavigationBar.appearance().isTranslucent = false
         
         return true
