@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import MapKit
 
 class ViewIncidentViewController: UIViewController {
     
@@ -37,6 +38,32 @@ class ViewIncidentViewController: UIViewController {
         if (incident.imageUrl != "") {
             incidentImageView.sd_setImage(with: URL(string: incident.imageUrl), placeholderImage: UIImage(named: "no-preview"))
         }
+        
+//        let latitude: CLLocationDegrees = 27.1
+//
+//        let longitude: CLLocationDegrees = 78.0
+//
+//        let lanDelta: CLLocationDegrees = 0.05
+//
+//        let lonDelta: CLLocationDegrees = 0.05
+//
+//        let span = MKCoordinateSpan(latitudeDelta: lanDelta, longitudeDelta: lonDelta)
+//
+//        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//
+//        let region = MKCoordinateRegion(center: coordinates, span: span)
+//
+//        map.setRegion(region, animated: true)
+        
+//        let annotation = MKPointAnnotation()
+//        
+//        annotation.title = "Taj Mahal"
+//        
+//        annotation.subtitle = "One day I'll go here..."
+//        
+//        annotation.coordinate = coordinates
+//        
+//        map.addAnnotation(annotation)
     }
 
     override func didReceiveMemoryWarning() {

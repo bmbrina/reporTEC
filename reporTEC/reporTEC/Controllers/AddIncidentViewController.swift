@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
     
     // MARK: - Custom Variables
     var ref : DatabaseReference!
@@ -18,57 +18,33 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var category : String = ""
     var imageUrl : String = ""
     var currentDate : String = ""
-    /*
-    var incidentImage : UIImage!
-    var imagePicker : UIImagePickerController!
     var locationManager = CLLocationManager()
-    var location : String = ""
- */
-    var activityIndicator = UIActivityIndicatorView()
- 
+    var latitude : Double!
+    var longitude : Double!
     
     // MARK: - Outlets
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
-
+    @IBOutlet weak var continueButton: RoundButton!
     
     // MARK: - Actions
-    
-    
     @IBAction func continuePressed(_ sender: Any) {
-        //TODO
-        // Validar que la info este completa
-        performSegue(withIdentifier: "continueAdd", sender: self)
-    }
-    
-    
-    @IBAction func addIncident(_ sender: UIButton) {
-        /*
         let title = titleField.text!
         let desc = descTextView.text!
-
-        // Build Incident
-        let incident = Incident(title: title, desc: desc, imageUrl: imageUrl, category: category, location: location, status: "pending", date: currentDate)
-            
+        
         if title != "" && desc != "" && category != "" {
-            // Firebase Database Reference
-            self.ref = Database.database().reference(withPath: "incidents")
-            let incidentRef = self.ref.childByAutoId()
-            incidentRef.setValue(incident.toAnyObject())
-            clearInformation()
-            tabBarController?.selectedIndex = 0
+            performSegue(withIdentifier: "continueAdd", sender: self)
         } else {
             let alert = UIAlertController(title: "Error", message: "El título, descripción y categoría son campos obligatorios.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
- */
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         ref = Database.database().reference(withPath: "categories")
         ref.observe(.value, with: { snapshot in
             var newCategories: [Category] = []
@@ -82,12 +58,11 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
             self.categoryPickerView.reloadAllComponents()
         })
         
-        /*
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        */
+        
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
@@ -128,37 +103,20 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         //addImageButton.backgroundColor = UIColor.darkBlueButton
     }
     
-    func startActivityIndicator() {
-        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-        
-        activityIndicator.center = self.view.center
-        
-        activityIndicator.hidesWhenStopped = true
-        
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
-        
-        UIApplication.shared.beginIgnoringInteractionEvents()
+    // MARK: - Location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation : CLLocation = locations[0]
+        latitude = userLocation.coordinate.latitude
+        longitude = userLocation.coordinate.longitude
     }
-    
-    func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
-    }
-    
-
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //TODO
         if segue.identifier == "continueAdd" {
             let vc = segue.destination as! AddContinueViewController
-            // pass values to next vc
+            vc.currentIncident = Incident(title: titleField.text!, desc: descTextView.text!, imageUrl: "", category: category, location: "", status: "pending", date: currentDate)
+            vc.latitude = latitude
+            vc.longitude = longitude
         }
         
     }

@@ -8,19 +8,25 @@
 
 import UIKit
 import Firebase
-import CoreLocation
+import MapKit
 
-class AddContinueViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+class AddContinueViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: - Custom Variables
+    var ref : DatabaseReference!
+    var incidentImage : UIImage!
+    var imageUrl : String = ""
     var imagePicker : UIImagePickerController = UIImagePickerController()
-    var locationManager = CLLocationManager()
+    var latitude : Double!
+    var longitude : Double!
     var location : String = ""
     var activityIndicator = UIActivityIndicatorView()
+    var currentIncident : Incident!
     
     // MARK: - Outlets
     @IBOutlet weak var addImageBtn: UIButton!
     @IBOutlet weak var selectedImageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Actions
     @IBAction func selectImage(_ sender: Any) {
@@ -50,43 +56,54 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func addIncident(_ sender: UIButton) {
-        /*
-        let title = titleField.text!
-        let desc = descTextView.text!
         
-        // Build Incident
-        let incident = Incident(title: title, desc: desc, imageUrl: imageUrl, category: category, location: location, status: "pending", date: currentDate)
+        if imageUrl != "" {
+            currentIncident.imageUrl = imageUrl
+        }
         
-        if title != "" && desc != "" && category != "" {
+        if location != "" {
             // Firebase Database Reference
+            currentIncident.location = location
+            
             self.ref = Database.database().reference(withPath: "incidents")
             let incidentRef = self.ref.childByAutoId()
-            incidentRef.setValue(incident.toAnyObject())
-            clearInformation()
+            incidentRef.setValue(currentIncident.toAnyObject())
             tabBarController?.selectedIndex = 0
         } else {
-            let alert = UIAlertController(title: "Error", message: "El título, descripción y categoría son campos obligatorios.", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: "La ubicación es un campo obligatorio.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
-         */
-         
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Reportar incidente"
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
         imagePicker.delegate = self
+        
+        // Set Map Region
+        let latitude: CLLocationDegrees = self.latitude
+        
+        let longitude: CLLocationDegrees = self.longitude
+        
+        let lanDelta: CLLocationDegrees = 0.05
+        
+        let lonDelta: CLLocationDegrees = 0.05
+        
+        let span = MKCoordinateSpan(latitudeDelta: lanDelta, longitudeDelta: lonDelta)
+        
+        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        let region = MKCoordinateRegion(center: coordinates, span: span)
+        
+        mapView.setRegion(region, animated: true)
+        
+        let uilpgr = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        
+        uilpgr.minimumPressDuration = 2
+        
+        mapView.addGestureRecognizer(uilpgr)
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,12 +116,9 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
         selectedImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         addImageBtn.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.1411764706, blue: 0.3647058824, alpha: 0.5)
         self.imagePicker.dismiss(animated: true, completion: nil)
-        //addImageBtn.backgroundColor = UIColor.gray
-        //startActivityIndicator()
+        startActivityIndicator()
         
-        // TODO move to addIncident
-        /*
-        let storageRef = Storage.storage().reference().child("images/\(titleField.text!)_\(currentDate).jpg")
+        let storageRef = Storage.storage().reference().child("images/\(currentIncident.title)_\(currentIncident.date).jpg")
         incidentImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         let data = UIImageJPEGRepresentation(incidentImage, 0.8)!
         storageRef.putData(data, metadata: nil) { (metadata, error) in
@@ -115,15 +129,56 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
             self.imageUrl = (metadata?.downloadURL()?.absoluteString)!
             self.stopActivityIndicator()
         }
-        */
+
     }
     
-    // MARK: - Location
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation : CLLocation = locations[0]
-        location = "\(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)"
+    // MARK: - Map
+    @objc func addAnnotationOnLongPress(gesture: UIGestureRecognizer) {
+        
+        let touchPoint = gesture.location(in: self.mapView)
+        
+        let coordinate = mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+       
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = coordinate
+        
+        annotation.title = "Ubicación actual"
+        
+        annotation.subtitle = "Lugar del incidente"
+        
+        mapView.addAnnotation(annotation)
+        
+        location = "\(coordinate.latitude), \(coordinate.longitude)"
+        
+        mapView.isZoomEnabled = false;
+        mapView.isScrollEnabled = false;
+        mapView.isUserInteractionEnabled = false
+        
     }
     
+    
+    // MARK: - Activity Indicator
+    func startActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        
+        activityIndicator.center = self.view.center
+        
+        activityIndicator.hidesWhenStopped = true
+        
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
     
     /*
     // MARK: - Navigation

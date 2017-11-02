@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ecI-c4-DXS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ecI-c4-DXS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -269,6 +269,7 @@
                     <navigationItem key="navigationItem" title="Reportar incidente" id="6gP-ey-1r1"/>
                     <connections>
                         <outlet property="categoryPickerView" destination="Bpq-zc-OVR" id="I4W-Pe-hPc"/>
+                        <outlet property="continueButton" destination="Zfx-MW-SWz" id="XWF-VI-VDa"/>
                         <outlet property="descTextView" destination="1Dc-sO-23S" id="EyM-RZ-1fp"/>
                         <outlet property="titleField" destination="Yyc-Co-yqx" id="bJF-33-a7N"/>
                         <segue destination="DIb-4x-gGC" kind="show" identifier="continueAdd" id="D9I-eQ-iAt"/>
@@ -291,25 +292,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwM-YM-rUx" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
-                                <rect key="frame" x="16" y="567" width="343" height="36"/>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.50588235290000005" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Eyl-WK-YLG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Reportar incidente">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="addIncident:" destination="3uc-FJ-vlB" eventType="touchUpInside" id="Wv9-y1-g98"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C63-AO-Kkf" customClass="RoundView" customModule="reporTEC" customModuleProvider="target">
                                 <rect key="frame" x="16" y="132" width="343" height="150"/>
                                 <subviews>
@@ -365,6 +347,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwM-YM-rUx" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
+                                <rect key="frame" x="16" y="615" width="343" height="36"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.50588235290000005" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Eyl-WK-YLG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Reportar incidente">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addIncident:" destination="DIb-4x-gGC" eventType="touchUpInside" id="zE1-FR-ko6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -383,6 +384,7 @@
                     </view>
                     <connections>
                         <outlet property="addImageBtn" destination="Fyy-Ti-lKW" id="uAD-uQ-K47"/>
+                        <outlet property="mapView" destination="3wh-Y3-dMp" id="yyG-cJ-w4z"/>
                         <outlet property="selectedImageView" destination="QSb-aS-HlD" id="p74-F3-SfJ"/>
                     </connections>
                 </viewController>
