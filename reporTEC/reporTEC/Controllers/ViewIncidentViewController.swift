@@ -72,6 +72,10 @@ class ViewIncidentViewController: UIViewController {
         annotation.coordinate = coordinates
         
         map.addAnnotation(annotation)
+        
+        map.isZoomEnabled = false;
+        map.isScrollEnabled = false;
+        map.isUserInteractionEnabled = false
     }
 
     override func didReceiveMemoryWarning() {

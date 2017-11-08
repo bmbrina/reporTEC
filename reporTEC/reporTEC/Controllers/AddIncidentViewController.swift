@@ -45,18 +45,7 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference(withPath: "categories")
-        ref.observe(.value, with: { snapshot in
-            var newCategories: [Category] = []
-            
-            for item in snapshot.children {
-                let category = Category(snapshot: item as! DataSnapshot)
-                newCategories.append(category)
-            }
-            
-            self.categories = newCategories
-            self.categoryPickerView.reloadAllComponents()
-        })
+        getCategories()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -67,6 +56,21 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         currentDate = formatter.string(from: date)
+    }
+    
+    func getCategories() {
+        ref = Database.database().reference(withPath: "categories")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            var newCategories: [Category] = []
+            
+            for item in snapshot.children {
+                let category = Category(snapshot: item as! DataSnapshot)
+                newCategories.append(category)
+            }
+            
+            self.categories = newCategories
+            self.categoryPickerView.reloadAllComponents()
+        }
     }
 
     override func didReceiveMemoryWarning() {

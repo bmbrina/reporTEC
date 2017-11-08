@@ -83,7 +83,7 @@
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="reporTEC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial" title="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="reporTEC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +156,16 @@
                             <outlet property="delegate" destination="0Wa-gb-whZ" id="hMv-0L-eMg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Reportes" id="2Ge-k3-wfQ"/>
+                    <navigationItem key="navigationItem" title="Reportes" id="2Ge-k3-wfQ">
+                        <barButtonItem key="rightBarButtonItem" image="exit" id="4fx-vX-aMa">
+                            <connections>
+                                <action selector="logOut:" destination="0Wa-gb-whZ" id="BeS-6j-csQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Pgs-RJ-XWf">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYu-8r-UYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -672,6 +681,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="exit" width="68" height="76"/>
         <image name="eye" width="30" height="17"/>
         <image name="no-preview" width="293" height="151"/>
         <image name="phone" width="30" height="30"/>

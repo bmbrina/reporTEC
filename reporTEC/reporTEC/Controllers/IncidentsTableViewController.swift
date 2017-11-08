@@ -16,18 +16,30 @@ class IncidentsTableViewController: UITableViewController {
     var incidents : [Incident] = []
     var categories : [Category] = []
     var incidentsByCategory = [[Incident]]()
-
+    
+    // MARK: - Actions
+    
+    @IBAction func logOut(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "initial") as! MainViewController
+        view.window?.rootViewController = vc
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
 
+        self.refreshControl?.addTarget(self, action: #selector(refreshIncidents(_:)), for: .valueChanged)
         
         // Get incidents from Firebase
         getIncidents()
         
         // Get categories from Firebase
         getCategories()
+    }
+    
+    @objc private func refreshIncidents(_ sender: Any) {
+        getIncidents()
     }
     
     func getIncidents() {
@@ -43,6 +55,8 @@ class IncidentsTableViewController: UITableViewController {
             self.incidents = newIncidents
             // Sort Incidents into arrays by category
             self.sortIncidents()
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -92,13 +106,7 @@ class IncidentsTableViewController: UITableViewController {
                 break
             }
         }
-        incidentsByCategory.append(case1)
-        incidentsByCategory.append(case2)
-        incidentsByCategory.append(case3)
-        incidentsByCategory.append(case4)
-        incidentsByCategory.append(case5)
-        
-        tableView.reloadData()
+        incidentsByCategory = [case1, case2, case3, case4, case5]
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -109,7 +117,19 @@ class IncidentsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return categories.count
+        
+        if categories.count > 0 {
+            tableView.separatorStyle = .singleLine
+            return categories.count
+        } else  {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "Aún no tienes incidentes"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
