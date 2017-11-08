@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ecI-c4-DXS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,14 +45,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GyH-IF-g5d">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="a00000000@itesm.mx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GyH-IF-g5d">
                                 <rect key="frame" x="16" y="203" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIs-1F-h3b">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*******" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIs-1F-h3b">
                                 <rect key="frame" x="16" y="333" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -67,6 +67,9 @@
                                 <state key="normal" title="Enter">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ecI-c4-DXS" kind="show" id="MV4-qZ-kUw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27975612878799438" green="0.41772422194480896" blue="0.67501372098922729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFW-Ti-sxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1056.8" y="27.436281859070466"/>
+            <point key="canvasLocation" x="-898" y="760"/>
         </scene>
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
@@ -91,17 +94,31 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSZ-yC-Qdz">
-                                <rect key="frame" x="128" y="617" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSZ-yC-Qdz" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
+                                <rect key="frame" x="82" y="617" width="210" height="30"/>
+                                <color key="backgroundColor" red="0.32549019607843138" green="0.59215686274509804" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="iNX-gU-MxE"/>
+                                    <constraint firstAttribute="height" constant="30" id="r9R-f5-jpw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Iniciar Sesión">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="oWq-WO-7VE" kind="show" id="IJz-IW-COO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2784313725" green="0.41960784309999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eSZ-yC-Qdz" secondAttribute="bottom" constant="20" id="FEk-F8-qPm"/>
+                            <constraint firstItem="eSZ-yC-Qdz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="awV-3e-HpD"/>
                             <constraint firstItem="V3Y-ws-CSd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="mth-Ys-QsG"/>
                             <constraint firstItem="V3Y-ws-CSd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tPP-X2-NqS"/>
                         </constraints>
@@ -111,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1047" y="760"/>
+            <point key="canvasLocation" x="-1687.2" y="759.67016491754134"/>
         </scene>
         <!--Reportes-->
         <scene sceneID="wVg-k8-ifl">
@@ -285,6 +302,7 @@
                         <outlet property="descriptionLabel" destination="SsC-bR-lOZ" id="URz-cC-JNh"/>
                         <outlet property="incidentImageView" destination="PJH-bf-kNP" id="aU3-28-X0J"/>
                         <outlet property="infoUIView" destination="m4w-Kp-1Yz" id="N6Z-Mv-nwX"/>
+                        <outlet property="map" destination="bon-41-7fj" id="mXv-Nw-PuJ"/>
                         <outlet property="scrollView" destination="HQX-jd-q8c" id="dIC-ny-nAm"/>
                         <outlet property="statusLabel" destination="a8L-01-cRr" id="2xi-rm-pW0"/>
                     </connections>

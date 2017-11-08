@@ -21,7 +21,7 @@ class IncidentsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-        
+
         ref = Database.database().reference(withPath: "incidents")
         ref.observe(.value, with: { snapshot in
             var newIncidents: [Incident] = []
@@ -132,6 +132,5 @@ class IncidentsTableViewController: UITableViewController {
         let index = tableView.indexPathForSelectedRow
         detailView.incident = incidents[(index?.row)!]
     }
- 
 
 }
