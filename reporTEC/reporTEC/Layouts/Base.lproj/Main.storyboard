@@ -95,11 +95,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSZ-yC-Qdz" customClass="RoundButton" customModule="reporTEC" customModuleProvider="target">
-                                <rect key="frame" x="82" y="617" width="210" height="30"/>
+                                <rect key="frame" x="37" y="607" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.32549019607843138" green="0.59215686274509804" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="iNX-gU-MxE"/>
-                                    <constraint firstAttribute="height" constant="30" id="r9R-f5-jpw"/>
+                                    <constraint firstAttribute="width" constant="300" id="iNX-gU-MxE"/>
+                                    <constraint firstAttribute="height" constant="40" id="r9R-f5-jpw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Iniciar Sesión">
@@ -449,7 +449,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C63-AO-Kkf" customClass="RoundView" customModule="reporTEC" customModuleProvider="target">
                                 <rect key="frame" x="16" y="132" width="343" height="150"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSb-aS-HlD">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSb-aS-HlD">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyy-Ti-lKW">

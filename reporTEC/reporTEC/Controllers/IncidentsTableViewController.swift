@@ -22,8 +22,17 @@ class IncidentsTableViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
 
+        
+        // Get incidents from Firebase
+        getIncidents()
+        
+        // Get categories from Firebase
+        getCategories()
+    }
+    
+    func getIncidents() {
         ref = Database.database().reference(withPath: "incidents")
-        ref.observe(.value, with: { snapshot in
+        ref.observeSingleEvent(of: .value) { (snapshot) in
             var newIncidents: [Incident] = []
             
             for item in snapshot.children {
@@ -34,16 +43,13 @@ class IncidentsTableViewController: UITableViewController {
             self.incidents = newIncidents
             // Sort Incidents into arrays by category
             self.sortIncidents()
-        })
-        
-        // Get categories from Firebase
-        getCategories()
+        }
     }
     
     
     func getCategories() {
         ref = Database.database().reference(withPath: "categories")
-        ref.observe(.value, with: { snapshot in
+        ref.observeSingleEvent(of: .value) { (snapshot) in
             var newCategories: [Category] = []
             
             for item in snapshot.children {
@@ -53,7 +59,7 @@ class IncidentsTableViewController: UITableViewController {
             
             self.categories = newCategories
             self.tableView.reloadData()
-        })
+        }
     }
 
     func sortIncidents() {
@@ -130,7 +136,7 @@ class IncidentsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailView = segue.destination as! ViewIncidentViewController
         let index = tableView.indexPathForSelectedRow
-        detailView.incident = incidents[(index?.row)!]
+        detailView.incident = incidentsByCategory[(index?.section)!][(index?.row)!]
     }
 
 }
