@@ -17,13 +17,18 @@ class ViewIncidentViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var incidentImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var infoUIView: UIView!
     
     // MARK: - Custom Variables
     var incident : Incident!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //scrollView
+         scrollView.contentSize = infoUIView.frame.size
+        
         //titleLabel.text = incident.title
         title = incident.title
         if (incident.status == "done") {
