@@ -86,16 +86,16 @@ class IncidentsTableViewController: UITableViewController {
         for incident in incidents {
         
             switch incident.category {
-            case "Asalto":
+            case "Circuito Tec":
                 case1.append(incident)
                 break
-            case "Percance":
+            case "Expreso Tec":
                 case2.append(incident)
                 break
-            case "Fauna herida":
+            case "BiciTec":
                 case3.append(incident)
                 break
-            case "Infraestructura dañada":
+            case "Seguridad":
                 case4.append(incident)
                 break
             case "Otro":

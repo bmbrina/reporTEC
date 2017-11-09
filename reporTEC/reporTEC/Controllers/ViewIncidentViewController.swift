@@ -51,9 +51,9 @@ class ViewIncidentViewController: UIViewController {
 
         let longitude: CLLocationDegrees = (locationArr[1] as NSString).doubleValue
 
-        let lanDelta: CLLocationDegrees = 0.05
+        let lanDelta: CLLocationDegrees = 0.01
 
-        let lonDelta: CLLocationDegrees = 0.05
+        let lonDelta: CLLocationDegrees = 0.01
 
         let span = MKCoordinateSpan(latitudeDelta: lanDelta, longitudeDelta: lonDelta)
 

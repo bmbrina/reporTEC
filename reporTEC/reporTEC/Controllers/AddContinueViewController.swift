@@ -87,9 +87,9 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
         
         let longitude: CLLocationDegrees = self.longitude
         
-        let lanDelta: CLLocationDegrees = 0.05
+        let lanDelta: CLLocationDegrees = 0.01
         
-        let lonDelta: CLLocationDegrees = 0.05
+        let lonDelta: CLLocationDegrees = 0.01
         
         let span = MKCoordinateSpan(latitudeDelta: lanDelta, longitudeDelta: lonDelta)
         
