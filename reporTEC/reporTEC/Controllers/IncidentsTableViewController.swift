@@ -18,8 +18,8 @@ class IncidentsTableViewController: UITableViewController {
     var incidentsByCategory = [[Incident]]()
     
     // MARK: - Actions
-    
     @IBAction func logOut(_ sender: Any) {
+        User.sharedInstance.clean()
         let vc = storyboard?.instantiateViewController(withIdentifier: "initial") as! MainViewController
         view.window?.rootViewController = vc
     }
@@ -49,10 +49,13 @@ class IncidentsTableViewController: UITableViewController {
             
             for item in snapshot.children {
                 let incident = Incident(snapshot: item as! DataSnapshot)
-                newIncidents.append(incident)
+                if incident.user == User.sharedInstance.email {
+                    newIncidents.append(incident)
+                }
             }
             
             self.incidents = newIncidents
+            
             // Sort Incidents into arrays by category
             self.sortIncidents()
             self.tableView.reloadData()
@@ -108,18 +111,12 @@ class IncidentsTableViewController: UITableViewController {
         }
         incidentsByCategory = [case1, case2, case3, case4, case5]
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        
         if categories.count > 0 {
             tableView.separatorStyle = .singleLine
+            tableView.backgroundView  = nil
             return categories.count
         } else  {
             let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
@@ -133,7 +130,6 @@ class IncidentsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return incidentsByCategory[section].count
     }
     
@@ -143,7 +139,6 @@ class IncidentsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "incidentCell", for: indexPath)
-    
         cell.textLabel?.text = incidentsByCategory[indexPath.section][indexPath.row].title
         let status = incidentsByCategory[indexPath.section][indexPath.row].status
         cell.imageView?.image = UIImage(named: status)

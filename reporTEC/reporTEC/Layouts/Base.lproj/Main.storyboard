@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="bcx-p7-cJy">
             <objects>
-                <viewController id="oWq-WO-7VE" sceneMemberID="viewController">
+                <viewController id="oWq-WO-7VE" customClass="LoginViewController" customModule="reporTEC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iik-cf-qnk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,14 +50,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*******" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIs-1F-h3b">
                                 <rect key="frame" x="16" y="333" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdV-6M-lDQ">
                                 <rect key="frame" x="136" y="465" width="103" height="71"/>
@@ -73,10 +73,23 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27975612878799438" green="0.41772422194480896" blue="0.67501372098922729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="8Z7-uc-oL1"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="AKw-08-umF" appends="YES" id="Gr4-YY-GJQ"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="tfEmail" destination="GyH-IF-g5d" id="gac-EO-MyC"/>
+                        <outlet property="tfPassword" destination="yIs-1F-h3b" id="hm8-I0-DbW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFW-Ti-sxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AKw-08-umF">
+                    <connections>
+                        <action selector="removeKeyboard:" destination="oWq-WO-7VE" id="x5E-w0-bZj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-898" y="760"/>
         </scene>
@@ -497,6 +510,9 @@
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3wh-Y3-dMp">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="301"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="DIb-4x-gGC" id="6W0-40-Clz"/>
+                                        </connections>
                                     </mapView>
                                 </subviews>
                                 <constraints>
@@ -604,7 +620,7 @@
         <!--ReporTec-->
         <scene sceneID="QQ6-3q-IgF">
             <objects>
-                <tabBarController id="ecI-c4-DXS" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbar" id="ecI-c4-DXS" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="ReporTec" id="Hgj-YD-Zek"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" restorationIdentifier="tabBarController" insetsLayoutMarginsFromSafeArea="NO" id="Q3f-KA-VNg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>

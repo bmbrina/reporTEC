@@ -21,8 +21,9 @@ class Incident: NSObject {
     var location : String = ""
     var status : String = ""
     var date : String = ""
+    var user : String = ""
     
-    init(title: String, desc: String, imageUrl: String, category: String, location: String, status: String, date: String, key: String = "") {
+    init(title: String, desc: String, imageUrl: String, category: String, location: String, status: String, date: String, key: String = "", user: String) {
         self.key = key
         self.title = title
         self.status = status
@@ -32,6 +33,7 @@ class Incident: NSObject {
         self.location = location
         self.date = date
         self.ref = nil
+        self.user = user
         
     }
     
@@ -45,6 +47,7 @@ class Incident: NSObject {
         location = snapshotValue["location"] as! String
         status = snapshotValue["status"] as! String
         date = snapshotValue["date"] as! String
+        user = snapshotValue["user"] as! String
         ref = snapshot.ref
     }
     
@@ -56,7 +59,8 @@ class Incident: NSObject {
             "category": category,
             "location": location,
             "status": status,
-            "date": date
+            "date": date,
+            "user": user
         ]
     }
 }

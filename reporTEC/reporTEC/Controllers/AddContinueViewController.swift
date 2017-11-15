@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 
-class AddContinueViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddContinueViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MKMapViewDelegate {
 
     // MARK: - Custom Variables
     var ref : DatabaseReference!
@@ -99,11 +99,11 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
         
         mapView.setRegion(region, animated: true)
         
-        let uilpgr = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addAnnotationOnTap(gesture:)))
         
-        uilpgr.minimumPressDuration = 2
+        tap.numberOfTapsRequired = 1
         
-        mapView.addGestureRecognizer(uilpgr)
+        mapView.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -133,12 +133,12 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     // MARK: - Map
-    @objc func addAnnotationOnLongPress(gesture: UIGestureRecognizer) {
+    @objc func addAnnotationOnTap(gesture: UIGestureRecognizer) {
         
         let touchPoint = gesture.location(in: self.mapView)
         
         let coordinate = mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-       
+    
         let annotation = MKPointAnnotation()
         
         annotation.coordinate = coordinate
@@ -146,15 +146,12 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
         annotation.title = "Ubicación actual"
         
         annotation.subtitle = "Lugar del incidente"
+    
+        mapView.removeAnnotations(mapView.annotations)
         
         mapView.addAnnotation(annotation)
         
         location = "\(coordinate.latitude), \(coordinate.longitude)"
-        
-        mapView.isZoomEnabled = false;
-        mapView.isScrollEnabled = false;
-        mapView.isUserInteractionEnabled = false
-        
     }
     
     

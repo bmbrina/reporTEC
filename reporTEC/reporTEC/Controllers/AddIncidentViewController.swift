@@ -118,7 +118,7 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "continueAdd" {
             let vc = segue.destination as! AddContinueViewController
-            vc.currentIncident = Incident(title: titleField.text!, desc: descTextView.text!, imageUrl: "", category: category, location: "", status: "pending", date: currentDate)
+            vc.currentIncident = Incident(title: titleField.text!, desc: descTextView.text!, imageUrl: "", category: category, location: "", status: "pending", date: currentDate, user: User.sharedInstance.email)
             vc.latitude = latitude
             vc.longitude = longitude
         }
