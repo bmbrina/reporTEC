@@ -24,6 +24,17 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if tfEmail.text! == "" || tfPassword.text! == "" {
+            let alert = UIAlertController(title: "Error", message: "El usuario y contraseña son campos obligatorios.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return false
+        }
+        return true
+            
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         User.sharedInstance.setEmail(tfEmail.text!)
