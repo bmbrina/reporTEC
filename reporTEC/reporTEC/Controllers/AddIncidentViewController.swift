@@ -113,6 +113,8 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         titleField.text = ""
         descTextView.text = ""
         categoryPickerView.selectRow(0, inComponent: 0, animated: true)
+        let row = categoryPickerView.selectedRow(inComponent: 0)
+        category = categories[row].name
     }
     
     
@@ -128,5 +130,12 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
-
+    // MARK: - Device Orientation
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }

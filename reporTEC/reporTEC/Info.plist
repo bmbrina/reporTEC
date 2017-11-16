@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Queremos acceder a tu librería de fotos para mostrar evidencia del incidente.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -21,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) camera use</string>
+	<string>Queremos acceder a tu cámara para tomar evidencia del incidente.</string>
 	<key>NSLocationWhenInUsage</key>
 	<string>Queremos saber tu ubicación para poder mejorar el servicio de atención de incidentes.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

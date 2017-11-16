@@ -43,4 +43,13 @@ class LoginViewController: UIViewController {
     @IBAction func removeKeyboard(_ sender: Any) {
         view.endEditing(true)
     }
+    
+    // MARK: - Device Orientation
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }

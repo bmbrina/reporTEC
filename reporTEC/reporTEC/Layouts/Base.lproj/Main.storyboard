@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -600,19 +601,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="23" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qes-eb-QpJ">
-                                <rect key="frame" x="8" y="148" width="359" height="372"/>
-                                <string key="text">reporTEC ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Agosto Diciembre de 2017, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño.Desarrolladores:María Paula AnastásBárbara BrinaRicardo Liceo reporTEC se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.</string>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bL8-gC-7du">
+                                <rect key="frame" x="16" y="148" width="343" height="462"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">reporTEC ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Agosto Diciembre de 2017, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño.
+
+Desarrolladores:
+María Paula Anastás Benavides
+Bárbara Martínez Brina
+Ricardo Licea Mata
+
+reporTEC se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nP6-Gr-fiu" firstAttribute="trailing" secondItem="Qes-eb-QpJ" secondAttribute="trailing" constant="8" id="04z-lG-sg2"/>
-                            <constraint firstItem="Qes-eb-QpJ" firstAttribute="leading" secondItem="nP6-Gr-fiu" secondAttribute="leading" constant="8" id="Pfd-4b-qMh"/>
-                            <constraint firstItem="Qes-eb-QpJ" firstAttribute="top" secondItem="nP6-Gr-fiu" secondAttribute="top" constant="32" id="kWi-R0-7ct"/>
+                            <constraint firstItem="nP6-Gr-fiu" firstAttribute="bottom" secondItem="bL8-gC-7du" secondAttribute="bottom" constant="8" id="1fZ-KR-JNR"/>
+                            <constraint firstItem="nP6-Gr-fiu" firstAttribute="trailing" secondItem="bL8-gC-7du" secondAttribute="trailing" constant="16" id="AsJ-EW-i2w"/>
+                            <constraint firstItem="bL8-gC-7du" firstAttribute="leading" secondItem="nP6-Gr-fiu" secondAttribute="leading" constant="16" id="bzs-hB-EBi"/>
+                            <constraint firstItem="bL8-gC-7du" firstAttribute="top" secondItem="nP6-Gr-fiu" secondAttribute="top" constant="32" id="lD7-gN-R2J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nP6-Gr-fiu"/>
                     </view>
@@ -620,7 +629,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZr-qj-JDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3034" y="-171"/>
+            <point key="canvasLocation" x="3032.8000000000002" y="-171.36431784107947"/>
         </scene>
         <!--Directorio-->
         <scene sceneID="9e7-xj-GhQ">
