@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
+class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, AddIncidentDelegate {
     
     // MARK: - Custom Variables
     var ref : DatabaseReference!
@@ -68,6 +68,7 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 newCategories.append(category)
             }
             
+            self.category = (newCategories.first?.name)!
             self.categories = newCategories
             self.categoryPickerView.reloadAllComponents()
         }
@@ -100,19 +101,20 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
         view.endEditing(true)
     }
     
-    func clearInformation() {
-        titleField.text = ""
-        descTextView.text = "Descripción"
-        categoryPickerView.selectRow(0, inComponent: 0, animated: true)
-        //addImageButton.backgroundColor = UIColor.darkBlueButton
-    }
-    
     // MARK: - Location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation : CLLocation = locations[0]
         latitude = userLocation.coordinate.latitude
         longitude = userLocation.coordinate.longitude
     }
+    
+    // MARK: AddIncidentDelegate
+    func incidentAdded() {
+        titleField.text = ""
+        descTextView.text = ""
+        categoryPickerView.selectRow(0, inComponent: 0, animated: true)
+    }
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,6 +123,7 @@ class AddIncidentViewController: UIViewController, UIPickerViewDelegate, UIPicke
             vc.currentIncident = Incident(title: titleField.text!, desc: descTextView.text!, imageUrl: "", category: category, location: "", status: "pending", date: currentDate, user: User.sharedInstance.email)
             vc.latitude = latitude
             vc.longitude = longitude
+            vc.delegate = self
         }
         
     }

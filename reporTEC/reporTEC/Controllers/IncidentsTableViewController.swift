@@ -24,6 +24,7 @@ class IncidentsTableViewController: UITableViewController {
         view.window?.rootViewController = vc
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -149,9 +150,12 @@ class IncidentsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailView = segue.destination as! ViewIncidentViewController
-        let index = tableView.indexPathForSelectedRow
-        detailView.incident = incidentsByCategory[(index?.section)!][(index?.row)!]
+        if segue.identifier == "viewIncidentSegue" {
+            let detailView = segue.destination as! ViewIncidentViewController
+            let index = tableView.indexPathForSelectedRow
+            detailView.incident = incidentsByCategory[(index?.section)!][(index?.row)!]
+        }
+        
     }
 
 }

@@ -10,9 +10,14 @@ import UIKit
 import Firebase
 import MapKit
 
+protocol AddIncidentDelegate {
+    func incidentAdded() -> Void
+}
+
 class AddContinueViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MKMapViewDelegate {
 
     // MARK: - Custom Variables
+    var delegate: AddIncidentDelegate?
     var ref : DatabaseReference!
     var incidentImage : UIImage!
     var imageUrl : String = ""
@@ -68,7 +73,13 @@ class AddContinueViewController: UIViewController, UIImagePickerControllerDelega
             self.ref = Database.database().reference(withPath: "incidents")
             let incidentRef = self.ref.childByAutoId()
             incidentRef.setValue(currentIncident.toAnyObject())
+            
+            if let delegate = delegate {
+                delegate.incidentAdded()
+            }
+            
             tabBarController?.selectedIndex = 0
+            navigationController?.popViewController(animated: false)
         } else {
             let alert = UIAlertController(title: "Error", message: "La ubicación es un campo obligatorio.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))

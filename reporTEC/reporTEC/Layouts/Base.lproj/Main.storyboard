@@ -174,7 +174,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="r1L-Px-hff" kind="show" id="ci1-Y5-mze"/>
+                                    <segue destination="r1L-Px-hff" kind="show" identifier="viewIncidentSegue" id="ci1-Y5-mze"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -184,7 +184,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Reportes" id="2Ge-k3-wfQ">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="info" id="XXx-We-oZK">
+                            <connections>
+                                <segue destination="T3n-Vq-U1K" kind="show" id="I7w-8k-y2T"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="exit" id="4fx-vX-aMa">
+                            <color key="tintColor" red="0.2797561288" green="0.41772422190000003" blue="0.67501372100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logOut:" destination="0Wa-gb-whZ" id="BeS-6j-csQ"/>
                             </connections>
@@ -586,6 +592,36 @@
             </objects>
             <point key="canvasLocation" x="2184.8000000000002" y="759.67016491754134"/>
         </scene>
+        <!--Créditos-->
+        <scene sceneID="8DE-9K-TUN">
+            <objects>
+                <viewController storyboardIdentifier="credits" id="T3n-Vq-U1K" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nYn-ce-2ZY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="23" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qes-eb-QpJ">
+                                <rect key="frame" x="8" y="148" width="359" height="372"/>
+                                <string key="text">reporTEC ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Agosto Diciembre de 2017, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño.Desarrolladores:María Paula AnastásBárbara BrinaRicardo Liceo reporTEC se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="nP6-Gr-fiu" firstAttribute="trailing" secondItem="Qes-eb-QpJ" secondAttribute="trailing" constant="8" id="04z-lG-sg2"/>
+                            <constraint firstItem="Qes-eb-QpJ" firstAttribute="leading" secondItem="nP6-Gr-fiu" secondAttribute="leading" constant="8" id="Pfd-4b-qMh"/>
+                            <constraint firstItem="Qes-eb-QpJ" firstAttribute="top" secondItem="nP6-Gr-fiu" secondAttribute="top" constant="32" id="kWi-R0-7ct"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nP6-Gr-fiu"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Créditos" id="cNv-LH-d9n"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZr-qj-JDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3034" y="-171"/>
+        </scene>
         <!--Directorio-->
         <scene sceneID="9e7-xj-GhQ">
             <objects>
@@ -629,7 +665,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfB-2K-qQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="1532"/>
+            <point key="canvasLocation" x="1457" y="1530"/>
         </scene>
         <!--ReporTec-->
         <scene sceneID="QQ6-3q-IgF">
@@ -713,12 +749,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaD-Ve-pit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683.20000000000005" y="1532.833583208396"/>
+            <point key="canvasLocation" x="682" y="1530"/>
         </scene>
     </scenes>
     <resources>
         <image name="exit" width="25" height="28"/>
         <image name="eye" width="30" height="17"/>
+        <image name="info" width="24" height="24"/>
         <image name="no-preview" width="293" height="151"/>
         <image name="phone" width="30" height="30"/>
         <image name="plus" width="30" height="30"/>
